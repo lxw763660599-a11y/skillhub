@@ -1,53 +1,58 @@
 ---
-name: API 模拟服务器
-description: 零配置 REST/GraphQL API Mock 工具。自动生成模拟数据，支持延迟模拟和错误注入。
+name: Mock API服务
+description: 输入数据结构描述，快速生成可调用的 Mock API 接口
 category: 开发
-tags: [API, Mock, 测试, 开发]
-version: 1.0.0
-author: mock-api
+tags: [API, Mock, 后端, 接口, 测试, 开发]
+version: 1.0
 ---
 
-# API 模拟服务器
+# Mock API 服务
 
-零配置启动 Mock API，支持 REST、GraphQL、WebSocket。
+描述你需要的 API 接口，自动生成可调用的 Mock 服务，支持增删改查、分页、筛选。
 
-## 核心功能
+## 功能
 
-- **零配置启动** — 定义接口结构，秒级启动 Mock 服务
-- **智能数据生成** — 自动生成逼真的模拟数据（中文名、地址、金额等）
-- **多协议支持** — REST / GraphQL / WebSocket
-- **延迟模拟** — 模拟真实网络延迟
-- **错误注入** — 随机返回 4xx/5xx 测试容错
-- **自动文档** — Swagger / GraphiQL 文档自动生成
+- **快速生成**：描述数据结构和接口行为 → 生成可立即调用的 API
+- **完整 CRUD**：GET/POST/PUT/DELETE 全支持
+- **高级特性**：分页、排序、筛选、关联查询、延迟模拟
+- **数据生成**：自动生成逼真的中文测试数据（人名、地址、手机号等）
+- **错误模拟**：自定义错误码和响应，测试异常处理
 
-## 使用方式
+## 使用方法
 
-```json
-// mock.config.json
-{
-  "endpoints": {
-    "GET /api/users": {
-      "response": "users.json",
-      "delay": 200
-    },
-    "POST /api/login": {
-      "response": { "token": "{{uuid}}", "user": "{{user}}" },
-      "errorRate": 0.1
-    }
-  }
-}
+```
+帮我创建一个博客系统的 Mock API：
+
+文章（posts）：
+- id, title, content, author, tags, created_at
+- 支持分页、按标签筛选、关键词搜索
+
+评论（comments）：
+- id, post_id, author, content, created_at
+- 支持按文章ID查询
+
+生成50篇测试文章和200条评论
 ```
 
-```bash
-# 启动 Mock 服务
-mock-api start --port 3000
+## 接口示例
 
-# 生成模拟数据
-mock-api gen users --count 100 --locale zh
+```
+GET  /api/posts?page=1&tag=tech&search=AI
+GET  /api/posts/:id
+POST /api/posts
+GET  /api/posts/:id/comments
+POST /api/posts/:id/comments
 ```
 
 ## 适用场景
 
-- 前后端并行开发
+- 前后端并行开发（后端还没写好）
+- 原型演示和 POC
 - 自动化测试
-- 原型演示
+- 教学和培训
+
+## 技巧
+
+- 指定中文测试数据：用户用中文名、手机号是138开头
+- 需要关联数据时明确外键关系
+- 告诉它"需要 token 鉴权"，会自动加上登录接口

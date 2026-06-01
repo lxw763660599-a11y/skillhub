@@ -1,59 +1,44 @@
 ---
-name: 浏览器自动化工作流
-description: 可视化浏览器自动化。录制操作步骤自动回放，无需代码。
+name: 浏览器自动化
+description: 模拟浏览器操作，自动完成网页填表、数据采集、截图监控等任务
 category: 效率
-tags: [自动化, 浏览器, RPA, 无代码]
-version: 1.0.0
-author: browser-bot
+tags: [自动化, 浏览器, 网页操作, RPA, 数据采集]
+version: 1.0
 ---
 
-# 浏览器自动化工作流
+# 浏览器自动化
 
-可视化录制浏览器操作，自动回放执行，无需编写代码。
+模拟人工操作浏览器，自动完成填表、点击、翻页、截图等重复性任务。
 
-## 核心功能
+## 功能
 
-- **可视化录制** — 点击录制按钮，操作浏览器，自动生成工作流
-- **条件判断** — 等待元素出现、判断页面内容
-- **循环执行** — 批量处理多页数据
-- **定时任务** — 每日/每周自动执行
-- **智能重试** — 页面加载失败自动重试
-- **数据抓取** — 提取页面结构化数据导出 Excel/JSON
+- **页面操作**：自动点击、输入、下拉选择、文件上传
+- **数据采集**：翻页抓取、表格提取、列表采集
+- **定时截图**：监控网页变化，定时截图对比
+- **表单填写**：批量填表、自动提交
+- **流程录制**：描述流程步骤，自动执行
 
-## 使用方式
+## 使用方法
 
-```bash
-# 启动录制模式
-browser-bot record
-
-# 回放工作流
-browser-bot replay daily-check.workflow
-
-# 定时执行
-browser-bot schedule daily-check.workflow --at "09:00" --weekday
-
-# 数据抓取
-browser-bot scrape "https://example.com/list" --pagination --output data.json
 ```
+帮我自动完成以下操作：
 
-## 工作流示例
-
-```yaml
-name: 每日签到
-steps:
-  - navigate: https://example.com
-  - click: "登录按钮"
-  - type: { selector: "#email", value: "user@example.com" }
-  - type: { selector: "#password", value: "{{ENV_PASSWORD}}" }
-  - click: "提交"
-  - wait: 2000
-  - click: "签到"
-  - screenshot: success.png
+1. 打开 https://example.com/admin
+2. 输入用户名 admin，密码 123456，点击登录
+3. 进入"用户管理"页面
+4. 把所有用户的邮箱导出为CSV
 ```
 
 ## 适用场景
 
-- 每日签到/打卡
-- 数据采集和监控
-- 表单批量填写
-- 跨系统流程自动化
+- 每天手动检查数据报表 → 自动截图发企业微信
+- 竞品价格每天变动 → 定时抓取存入Excel
+- 批量注册/填表 → 读取Excel逐条填写
+- 网页内容变化监控 → 关键词变化时通知
+
+## 技巧
+
+- 复杂流程写清楚每个步骤，不要省略
+- 遇到验证码让它暂停提醒你手动处理
+- 设置间隔时间避免触发反爬
+- 重要操作先让它"试运行一次，不实际提交"

@@ -1,51 +1,53 @@
 ---
-name: 前端组件库 AI 版
-description: AI 驱动的 UI 组件生成器。描述需求，自动生成 React/Vue 组件代码。
+name: UI组件生成器
+description: 描述需要的UI组件，自动生成可直接使用的React/Vue组件代码
 category: 开发
-tags: [UI, 组件, React, 前端, shadcn]
-version: 1.0.0
-author: ui-blocks
+tags: [UI, 组件, React, Vue, 前端, 组件库]
+version: 1.0
 ---
 
-# 前端组件库 AI 版
+# UI 组件生成器
 
-自然语言描述 UI 需求，AI 直接生成即用组件代码。
+用自然语言描述你需要的 UI 组件，自动生成可直接使用的组件代码。
 
-## 核心功能
+## 功能
 
-- **需求到组件** — "一个带搜索和分页的数据表格" → React 组件
-- **多框架** — React / Vue / Svelte / Solid 四框架支持
-- **设计系统适配** — shadcn/ui / Ant Design / MUI 风格
-- **响应式** — 自动处理移动端适配
-- **无障碍** — ARIA 属性自动添加
-- **Storybook 生成** — 组件文档自动输出
+- **多框架**：React / Vue / Svelte / 原生 HTML
+- **样式方案**：Tailwind CSS / CSS Modules / styled-components
+- **完整输出**：组件代码 + 类型定义 + 使用示例 + 单元测试
+- **无障碍**：自动添加 ARIA 标签、键盘导航支持
+- **响应式**：自动适配手机/平板/桌面
 
-## 使用方式
-
-```bash
-# 生成组件
-ui-gen create "用户信息卡片，包含头像、姓名、邮箱、操作按钮"
---framework react
---design shadcn
-
-# 批量生成
-ui-gen batch components.txt --output ./src/components/
-
-# 预览
-ui-gen preview UserCard
-```
+## 使用方法
 
 ```
-# components.txt
-✅ 数据表格（排序、筛选、分页）
-✅ 搜索栏（联想搜索、历史记录）
-✅ 步骤引导（4 步）
-✅ 通知中心（分类、已读未读）
+帮我创建一个"标签输入框"组件：
+
+功能：
+- 输入文字后按回车添加标签
+- 点击x删除标签
+- 最多10个标签
+- 重复标签自动去重并提示
+- 支持从建议列表中选择
+
+技术栈：React + TypeScript + Tailwind
 ```
 
-## 适用场景
+## 输出内容
 
-- 后台管理系统快速搭建
-- 设计稿到代码的快速实现
-- 组件库批量生成
-- 原型到 MVP 加速
+```
+TagInput/
+  TagInput.tsx     ← 组件主文件
+  TagInput.test.tsx ← 单元测试
+  README.md       ← Props 文档和使用示例
+```
+
+## 常用组件
+
+表格（排序/筛选/分页）、弹窗、下拉多选、文件上传、步骤条、评分组件、日历选择、富文本编辑器、图片轮播、骨架屏
+
+## 技巧
+
+- 描述"像XXX组件一样"加速生成
+- 指定组件库（Ant Design/Element Plus/Shadcn）
+- 告诉它现有项目的技术栈，生成代码直接兼容

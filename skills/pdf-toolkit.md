@@ -1,47 +1,47 @@
 ---
-name: PDF 全能工具箱
-description: 合并、拆分、压缩、转换 PDF 的全能工具。支持 OCR 文字识别和批量处理。
+name: PDF全能处理
+description: PDF合并拆分、格式转换、水印添加、压缩优化等一站式处理
 category: 效率
-tags: [PDF, 文档, 转换, OCR]
-version: 1.0.0
-author: pdf-toolkit
+tags: [PDF, 文档处理, 格式转换, 办公]
+version: 1.0
 ---
 
-# PDF 全能工具箱
+# PDF 全能处理
 
-合并、拆分、压缩、转换 PDF，一站式解决所有 PDF 需求。
+一站式 PDF 处理工具，覆盖日常办公所有 PDF 需求。
 
-## 核心功能
+## 功能
 
-- **合并 PDF** — 将多个 PDF 文件按顺序合并为一个
-- **拆分 PDF** — 按页数或书签拆分 PDF
-- **PDF 转 Word/Excel/PPT** — 高质量格式转换，保留排版
-- **OCR 文字识别** — 扫描件也能提取文字
-- **压缩 PDF** — 批量压缩，保持画质
-- **完全本地处理** — 文件不上传，保护隐私
+- **合并拆分**：多文件合并、按页拆分、提取指定页面
+- **格式转换**：PDF ↔ Word/Excel/PPT/图片/HTML
+- **编辑操作**：添加水印、页码、页眉页脚、签名
+- **压缩优化**：无损压缩、有损压缩、图片降质
+- **信息提取**：提取文字、表格、图片、元数据
+- **加密保护**：设置打开密码、权限密码
 
-## 使用方式
+## 使用方法
 
-```bash
-# 合并 PDF
-pdf-tool merge file1.pdf file2.pdf -o merged.pdf
+```
+把这3个PDF合并成一个：[上传 file1.pdf file2.pdf file3.pdf]
+合并后添加页码和水印"机密"
+压缩到5MB以内
+```
 
-# 拆分 PDF（每 5 页一组）
-pdf-tool split document.pdf --every 5
-
-# PDF 转 Word
-pdf-tool convert report.pdf --format docx
-
-# OCR 识别
-pdf-tool ocr scanned.pdf -o readable.pdf
-
-# 压缩 PDF
-pdf-tool compress large.pdf --quality 80
+或：
+```
+把这份PDF里的所有表格提取出来，转成Excel
 ```
 
 ## 适用场景
 
-- 合同/报告合并归档
-- 扫描件转可编辑文档
-- 批量压缩减少文件体积
-- 提取 PDF 中的图片和文字
+- 合同合并归档
+- 标书制作
+- 发票提取
+- 简历优化
+- 电子书处理
+
+## 技巧
+
+- 批量处理时说清楚文件名规则
+- OCR扫描件先让它"增强识别清晰度"
+- 压缩时指定目标大小，它会自动调参数

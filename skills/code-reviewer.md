@@ -1,56 +1,52 @@
 ---
-name: AI 代码审查助手
-description: 基于 AI 的智能代码审查工具。自动检测 bug、安全漏洞、性能问题，并提供修复建议。
+name: 代码审查助手
+description: 自动审查代码质量、安全漏洞、性能问题和最佳实践
 category: 开发
-tags: [代码审查, GitHub, 安全, 自动化]
-version: 1.0.0
-author: code-reviewer
+tags: [代码审查, 安全, 性能, 重构, 代码质量]
+version: 1.0
 ---
 
-# AI 代码审查助手
+# 代码审查助手
 
-自动 PR Review，检测安全漏洞和代码异味，秒级反馈修复建议。
+提交代码前自动审查，发现 bug、安全漏洞、性能问题和风格问题。
 
-## 核心功能
+## 功能
 
-- **自动 PR Review** — 提交 PR 后自动审查，秒级反馈
-- **安全漏洞检测** — 识别 SQL 注入、XSS、敏感信息泄露等
-- **代码异味分析** — 检测重复代码、过长函数、复杂度过高
-- **一键修复** — 提供可直接应用的修复建议
-- **多平台支持** — GitHub / GitLab / Gitee 全平台兼容
-- **自定义规则** — 团队自定义审查规则
+- **Bug 检测**：空指针、资源泄漏、竞态条件、逻辑错误
+- **安全审查**：SQL注入、XSS、CSRF、硬编码密钥、不安全的依赖
+- **性能分析**：N+1查询、不必要的循环、内存泄漏隐患
+- **规范检查**：命名规范、函数长度、圈复杂度、注释覆盖率
+- **改进建议**：逐条给出重构方案和代码示例
 
-## 使用方式
+## 使用方法
 
-```bash
-# 审查单个文件
-ai-review check src/app.py
+```
+帮我审查这段代码：[粘贴代码]
 
-# 审查整个 PR
-ai-review pr https://github.com/user/repo/pull/123
-
-# 生成审查报告
-ai-review report --format markdown > review.md
+重点关注：安全和性能
 ```
 
-## 集成配置
-
-```yaml
-# .ai-review.yml
-rules:
-  - security
-  - performance
-  - style
-severity:
-  security: error
-  style: warning
-ignore:
-  - "**/vendor/**"
-  - "**/test/**"
+或：
+```
+审查这个文件：app/services/order.py
 ```
 
-## 适用场景
+## 审查输出示例
 
-- 日常 PR Review 加速
-- 新成员代码规范检查
-- CI/CD 流水线集成
+```
+⚠️ 发现 3 个问题：
+
+🔴 严重 - 第45行：SQL注入风险，应使用参数化查询
+🟡 警告 - 第78行：循环内查询数据库，建议批量查询
+🟢 建议 - 第120行：函数超过50行，建议拆分为2个函数
+```
+
+## 支持语言
+
+Python、JavaScript/TypeScript、Java、Go、Rust、C/C++、PHP、Ruby、Swift
+
+## 技巧
+
+- 指定审查重点：安全/性能/可读性
+- 让它"只报严重和警告，忽略建议"
+- 审查后让它"直接给出修复后的完整代码"
